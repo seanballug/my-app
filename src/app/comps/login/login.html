@@ -1,64 +1,14 @@
-<div class="container d-flex justify-content-center align-items-center" style="min-height: 80vh;">
+<div class="container py-5" style="max-width: 400px;">
+  <h3 class="text-center mb-4">Login</h3>
 
-  <div class="card shadow-lg p-4" style="width: 100%; max-width: 400px;">
+  <input type="email" class="form-control mb-3" placeholder="Email" [(ngModel)]="email" name="email" />
 
-    <h3 class="text-center mb-4 fw-bold">Login</h3>
-
-    <form>
-
-      <!-- Email -->
-      <div class="mb-3">
-        <label class="form-label">Email address</label>
-        <input
-          type="email"
-          class="form-control"
-          placeholder="Enter email"
-        />
-      </div>
-
-      <!-- Password with Show / Hide -->
-      <div class="mb-3">
-        <label class="form-label">Password</label>
-
-        <div class="input-group">
-          <input
-            [type]="showPassword ? 'text' : 'password'"
-            class="form-control"
-            placeholder="Enter password"
-          />
-
-          <button
-            type="button"
-            class="btn btn-outline-secondary"
-            (click)="togglePassword()"
-          >
-            {{ showPassword}}
-          </button>
-        </div>
-      </div>
-
-      <!-- Remember me -->
-      <div class="form-check mb-3">
-        <input class="form-check-input" type="checkbox" id="rememberMe">
-        <label class="form-check-label" for="rememberMe">
-          Remember me
-        </label>
-      </div>
-
-      <!-- Login button -->
-      <button type="submit" class="btn btn-primary w-100">
-        🔐 Login
-      </button>
-
-    </form>
-
-    <!-- Extra -->
-    <div class="text-center mt-3">
-      <small class="text-muted">
-        Don’t have an account? <a href="#">Sign up</a>
-      </small>
-    </div>
-
+  <div class="input-group mb-3">
+    <input [type]="showPassword ? 'text' : 'password'" class="form-control" placeholder="Password" [(ngModel)]="password" name="password" />
+    <button class="btn btn-outline-secondary" type="button" (click)="togglePassword()">{{ showPassword ? '🙈' : '👁️' }}</button>
   </div>
 
+  <button class="btn btn-primary w-100" (click)="login()">Login</button>
+
+  <div *ngIf="error" class="alert alert-danger mt-3">{{ error }}</div>
 </div>
